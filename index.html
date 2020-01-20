@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+         .wrapper{
+        position: absolute;
+        top: 65%;
+        left: 22%;
+        transform: translate(-22%,-65%);
+        -ms-transform: translate(-22%,-65%);
+        -webkit-transform: translate(-22%,-65%);
+      }
+      .homebg{
+        max-width: 100%;
+        height: 800px;
+        background-image: url(images/twocolor.jpg);
+        -webkit-background-size:cover;
+        background-size: cover;
+
+      }
+      .wrapper p{
+        color:#708090;
+        font-size:18px;
+        line-height: 35px;
+      }
+      .wrapper a{
+        background: teal;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 35px;
+        border-radius: 20px;
+        display:inline-block;
+        margin-top: 30px
+      }
+
+      .images6 {
+        
+        margin-top: 44px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width:325px;
+        height: 400px;
+      }
+
+      .skillbar{text-align:center;font-family: 'Open Sans', sans-serif;}
+       .svgtag{width:30%;}
+
+ .containerdown {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  display: block;
+  /*width: 100%;*/
+  /*height: auto;*/
+        margin-top: 44px;
+        /*margin-left: 20px;*/
+        /*margin-right: 20px;*/
+        width:325px;
+        height: 350px;
+}
+
+.overlayimgdown {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #191970;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .6s ease;
+}
+
+  .containerdown:hover .overlayimgdown {
+  opacity: 0.78;
+  filter: alpha(opacity=50);  /*for IE8 and earlier */
+  bottom: 0;
+  height: 100%;
+}
+
+
+
+.containerup {
+  position: relative;
+  width: 100%;
+}
+.overlayimgup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #191970;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .6s ease;
+}
+
+ .containerup:hover .overlayimgup {
+  opacity: 0.78;
+  filter: alpha(opacity=50);  /*for IE8 and earlier */
+  height: 100%;
+}
+
+
+.containerright {
+  position: relative;
+  width: 100%;
+}
+
+.overlayimgright {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: #191970;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .6s ease;
+}
+
+ .containerright :hover .overlayimgright{
+  opacity: 0.78;
+  filter: alpha(opacity=50);  /*for IE8 and earlier */
+  width: 100%;
+  left: 0;
+}
+
+.containerleft {
+  position: relative;
+  width: 100%;
+}
+.overlayimgleft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #191970;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .6s ease;
+}
+
+ .containerleft:hover .overlayimgleft {
+  opacity: 0.78;
+  filter: alpha(opacity=50);  /*for IE8 and earlier */
+  width: 100%;
+
+}
+
+
+
+.textimg {
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.textleftright {
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /*white-space: nowrap;*/
+  text-align: left;
+}
+
+
+      
+      .footer{
+        position: relative;
+        margin-bottom: 0px;
+       
+        background-color: black;
+        color: white;
+        text-align: center; 
+      }
+
+      #homeani : before{
+        content: '';
+        animation: anime infinite 6s;
+       }
+
+      @keyframes anime{
+        from{ 
+               content: 'Freelancer'; 
+            }
+        to{
+              content: 'A FullStack Developer';
+          }
+       } 
+
+      
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md  navbar-light fixed-top" id="navscript" style="background-color: antiquewhite">
+
+    <div class="container">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-inline-block" href="#"><img src="images/logo_me.jpg" class="rounded-circle"
+                                                                 style="width:35px; height:35px;margin-right: 30px;"></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span id="togglling" class="navbar-toggler-icon"></span>Menu
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar" style="align-items: center ;font-size: 22px;">
+                <ul class="navbar-nav">
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="#section-home" style="margin-left: 10px;font-weight: 620 ">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="#section-about" style="margin-left:10px; font-weight: 620">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="#section-skills"
+                           style="margin-left: 10px;font-weight: 620">Knowledge</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="#section-portfolio"
+                           style="margin-left: 10px;font-weight: 620">Portfolio</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#section-contact"
+                           style="margin-left: 10px;font-weight: 620">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav><!---->
+<div class="container-fluid homebg col-sm-12 col-md-12" id="section-home">
+    <section class="wrapper">
+        <div>
+            <p style="font-weight: 750">Hello there! </p>
+            <h4 style="color: white">I'm Sudhanshu Singh</h4>
+
+        </div>
+
+        <div>
+            <h4 style="font-weight :800;color: paleturquoise">
+                <span id="homeani"></span>A full-stack web developer</h4>
+        </div>
+        <h3><a href="#section-portfolio">View my work</a></h3>
+
+    </section>
+</div>
+<!--About Me-->
+<div class="container" id="section-about" style="margin-top: 90px">
+    <div class="row ">
+        <div class="col-sm-6 col-md-6">
+            <img src="images/ravicol_.jpg" style="max-width: 100%; height:auto;" class="img-fluid rounded"
+                 alt="myphoto">
+        </div>
+
+
+        <div class="col-sm-6 col-md-6">
+            <h2 style="margin-top: 120px;font-weight: 880"> About Me</h2><br><br>
+            <p style="font-family: cursive;"> I am software engineer, worked as a intern and currently pursuing master
+                of Computer Science and Application(MCA) from AMU,India. I love building things by using problem solving
+                approches which are often intrinsically fun to tackle.</p>
+            <p style="font-family: cursive;">I'm seeking for a role which flourish me as a full-stack developer where I
+                can gain knowledge and experience with project management.</p>
+            <p class="">
+                <a href="#" class="fa far fa-envelope" style="font-size:36px;color:blue"></a>
+                <a href="#" class="fa fa-twitter" style="font-size:36px;color:blue;margin:11px"></a>
+                <a href="https://www.linked.com/in/sudhanshu-singh-911135166" class="fa fa-linkedin-square" style="font-size:36px;color:blue"></a>
+            </p>
+            <a href="Resume.pdf" type="button" class="btn btn-success">Resume</a>
+            <a href="#section-contact" type="button" class="btn btn-outline-info">Hire Me</a>
+        </div>
+    </div>
+</div>
+<!--    Progress bar div  
+
+<div class="col-sm-6 col-md-4 col-lg-4">
+            <svg id="animated" viewbox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="#FDB900"/>
+              <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                    d="M50 10
+                       a 40 40 0 0 1 0 80
+                       a 40 40 0 0 1 0 -80">
+              </path>
+              <text id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">100%</text>
+            </svg>
+        </div>
+ -->
+<div class="container-fluid" id="section-skills" style="margin: 74px 0px 74px 0px;background-color: aliceblue">
+      <div class="container skillbar" style="margin-bottom: 35px">
+                  <div  style="float:left;">
+                      <br>
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <h2 style="color: teal;"><strong>Skills</strong></h2>
+                        <hr>
+                       </div>
+                    </div>
+
+          <div class="row">
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family:cursive;"><b>C++</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text id="ount" x="50" y="50" text-anchor="middle" dy="7" font-size="20">80%</text>
+                  </svg>
+              </div>
+
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family:cursive;"><b>DBMS</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text id="ount" x="50" y="50" text-anchor="middle" dy="7" font-size="20">73%</text>
+                  </svg>
+              </div>
+
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family:cursive;"><b>Python3</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text id="ount" x="50" y="50" text-anchor="middle" dy="7" font-size="20">75%</text>
+                  </svg>
+              </div>
+
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family:cursive;"><b>Data Structure</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text id="ount" x="50" y="50" text-anchor="middle" dy="7" font-size="20">70%</text>
+                  </svg>
+              </div>
+
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family: cursive;"><b>Bootstrap4</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text id="ount" x="50" y="50" text-anchor="middle" dy="7" font-size="20">85%</text>
+                  </svg>
+              </div>
+
+
+              <div class="col-sm-6 col-md-4 col-lg-4" style="margin-top: 40px">
+                  <h4 style="font-family:cursive;"><b>Linux</b></h4>
+                  <svg class="svgtag" id="animated" viewbox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="#1E90FF"/>
+                      <path id="progress" stroke-linecap="round" stroke-width="5" stroke="#fff" fill="none"
+                            d="M50 10
+                             a 40 40 0 0 1 0 80
+                             a 40 40 0 0 1 0 -80">
+                      </path>
+                      <text  id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">90%</text>
+                  </svg>
+              </div>
+
+
+          </div>
+      </div>
+</div>
+
+<!-- resume container -->
+<div class="container-fluid " style="margin-top: 60px ;background-color: #191970; border-bottom:3px solid darkcyan; border-top:3px solid #191970;background-image: url(images/bg2.jpg); opacity: .95">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                <div style="color:white;margin: 45px 0px 32px 0px"><h2><i class="fa fa-graduation-cap" style="font-size:36px;color:white"></i><strong> Education</strong></h2>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Master of Computer Application</h3>
+                            <h5>Aligarh Muslim University 2017-2020</h5>
+                            <!--p class="card-text">I am pursuing post graduation in computer science from AMU.
+                               passionately learning new and advanced technologies.
+                            </p-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3" >
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Bachelor of Science in Physics</h3>
+                            <h5>Aligarh Muslim University 2014-2017</h5>
+                            <!--p class="card-text">I have completed graduation in physical science from AMU.</p-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Class XII</h3>
+                            <h5>CBSE 2014</h5>
+                            <!--p class="card-text">I have completed class XII in science.</p-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card " style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Class X</h3>
+                            <h5>CBSE 2012</h5>
+                            <!--p class="card-text">I have completed class X in science.</p-->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-------------------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-6 col-lg-6 col-sm-12" style="border-left:3px solid white">
+                <div style="color: white;margin: 45px 0px 32px 0px"><h2><i class="fa fa-angellist" style="font-size:48px;color:white"></i><strong>  Projects/Interns</strong></h2></div>
+                 <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Summer Training - LPADIP'18</h3>
+                            <h5> MNNIT,June- July 2018</h5>
+                            <!--p class="card-text">Developed a model which forecast the weather of specific region.</p-->
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">AMUProfessorRecruit 1.0</h3>
+                            <h5>Aug 2019 - Nov2019</h5>
+                            <!--p class="card-text">A step towards a university fair system in the selection processes.</p-->
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">Phishing Websites Detection</h3>
+                            <h5>Feb 2019 - May 2019</h5>
+                            <!--p class="card-text">A small step towards a recommded system - developed a ML model in Collaboration by using random forest algorithm.</p-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="card" style="margin: 20px 5px 15px 4px;background-color: #f1f3f3">
+                        <div class="card-body">
+                            <h3 class="card-title font-weight-bold">SudhanPortfolio</h3>
+                            <h5>Jan 2020</h5>
+                            <!--p class="card-text">Design a responsive website to explore oneself and do some practice in this vacations.</p-->
+                        </div>
+                    </div>
+
+                </div>
+               
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Knowledge on medium container -->
+<div class="container-fluid bg-light" id="section-portfolio" style="margin: 44px 0px 54px 0px">
+  <div class="container">
+
+          <div class="container">
+            <br>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+
+              <h2 style="color: teal;"><strong>Portfolio</strong></h2>
+              <hr>
+             </div>
+          </div>
+
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+
+
+                <div class="containerleft">
+                    <img src="images/a1.jpg" class="image">
+                    <div class="overlayimgleft">
+                        <div class="textleftright">
+                          <i class='fa fa-cogs' style='font-size:35px;color:skyblue'></i>
+                         
+                          <h3>Web Development</h3>
+                          <p> I am practicing web development in the Python3, Django2.2, MySQL, Javascript, CSS
+                              and HTML5 which are exploring my knowledge.
+                           </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+
+                <div class="containerdown">
+                    <img src="images/a4.jpg" class="image">
+                    <div class="overlayimgdown">
+                        <div class="textimg">
+                           <i class="fa fa-desktop" style="font-size:36px;color:skyblue"></i>
+                          <h3>Front End Design</h3>
+                          <p> I am trained in front-end design and love fine tuning a great layout.
+                            I have worked with Bootstrap , Materialize and some other frameworks .
+                           </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+
+                <div class="containerleft">
+                    <img src="images/a6.jpg" class="image">
+                    <div class="overlayimgleft">
+                        <div class="textleftright">
+                          <i class='fa fa-database' style='font-size:32px;color:skyblue'></i>
+                          <h3>DatabaseDesign</h3>
+                          <p>
+                            I have fundamental knowledge <br>of database design and have skills in primary implementation
+                            of Standard Query Language . I also worked on MySQL.
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+                <div class="containerdown">
+                    <img src="images/a3.jpg" class="image">
+                    <div class="overlayimgdown">
+                        <div class="textimg">
+                          
+                          <i class="fa fa-puzzle-piece" style="font-size:36px;color:skyblue"></i>
+                          <h3>Programming Concepts</h3>
+
+                             <p>
+                               I am  well-versed in object oriented  programming, debugging and program flow of the programming languages
+                               like C++ ,Java etc.
+                             </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+                <div class="containerup">
+                    <img src="images/a5.jpg" class="image">
+                    <div class="overlayimgup">
+                        <div class="textimg">
+                          <i class="fa fa-group" style="font-size:36px;color:skyblue"></i>
+                          <h3>Soft Skills</h3>
+                          <p>
+                            I also focus on quality of work, communication, personal responsibility , knowledge of business
+                            and how to be resourceful and self-confident and should have a team management.
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-4 mb-lg-4">
+                <div class="containerleft">
+                    <img src="images/a2.jpeg" class="image">
+                    <div class="overlayimgleft">
+                        <div class="textleftright">
+                          <i class="fa fa-bar-chart" style='font-size:30px;color:skyblue'></i>
+                          <h3>Technologies</h3>
+                         <p> I am regularly observing the quantum changes of technologies like AI ,Robotics, IoT etc.
+                          And learning how to change oneself into required technologies. 
+                        </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container-fluid " style="background-color: teal" id="section-contact">
+    <div class="container">
+        <br>
+        <div class="container col-md-8" style="color: white;font-weight: 700">
+            <h2 style="margin-top: 11px"> Wanna <strong>Start</strong> conversation with <strong>Me</strong> ?</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 ">
+                <form action="" onsubmit="return formvalidation()">
+                    <div class="form-group">
+                        <label  style="text-decoration-color: white"><strong>Name :</strong></label>
+                        <input type="text" name="user" class="form-control" id="inputname" placeholder="Your Name"
+                               autocomplete="off">
+                        <span id="userspan" class="text-danger" style="font-weight: bold"></span>
+                    </div>
+                    <div class="form-group">
+                        <label  style="text-decoration-color: white"><strong>E-mail :</strong></label>
+                        <input type="text" name="email" class="form-control" id="inputemail" placeholder="Mail address"
+                               autocomplete="off">
+                        <span id="emailspan" class="text-danger" style="font-weight: bold"></span>
+                    </div>
+                    <div class="form-group">
+                        <label  style="text-decoration-color: white"><strong>Mobile :</strong></label>
+                        <input type="text" name="mobile" class="form-control" id="inputmobile"
+                               placeholder="10 Digits mobile number" autocomplete="off">
+                        <span id="mobilespan" class="text-danger" style="font-weight: bold"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label  style="text-decoration-color: white"><strong>Subject </strong></label>
+                        <input type="text" name="subject" class="form-control" id="inputsubject"
+                               placeholder="title of concern" autocomplete="off">
+                        <span id="subjectspan" class="text-danger" style="font-weight: bold"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label
+                               style="text-decoration-color: white"><strong>Message</strong></label>
+                        <textarea  name="text" class="form-control" id="inputText" rows="5"
+                                  autocomplete="off"></textarea>
+                        <span id="messagespan" class="text-danger" style="font-weight: bold"></span>
+                    </div>
+
+                    <input type="button" name="" value="Submit" class="btn btn-outline-success" style="-webkit-transition-duration: 0.4s; /* Safari */
+                          transition-duration: 0.4s;background-color:lightpink;color:black" onclick="formvalidation()">
+
+
+                </form>
+                <br>
+
+            </div>
+            <div class="container col-sm-12 col-md-6 col-lg-6 ">
+
+                <h3 style="margin:111px 0px 5px 100px;font-size: 40px">Have a <strong>Question </strong>?</h3>
+                <hr>
+                <p class="d-flex" style="color: white">
+                    <a href="#" class="fa fa-map-marker" style="font-size:24px;color:white;margin-left: 100px"></a>
+                    48,New Building,Hemant Nagar Near Water Tank Aligarh, INDIA
+                </p>
+                <p style="color: white">
+                    <a href="#" class="fa fa-mobile-phone" style="font-size:24px;color:white;margin-left: 100px"></a>
+                    09834678943
+                </p>
+                <p style="color: white">
+                    <a href="#" class="fa far fa-envelope" style="font-size:24px;color:white;margin-left: 100px"></a>
+                    mr.sudmca@gmail.com
+                </p>
+                <br>
+                <p style="margin-left: 107px;font-family: cursive;font-weight: 700;font-size: 40px"><strong>Follow
+                    Me</strong></p>
+                <p class="">
+                    <a href="" class="fa far fa-facebook"  style="font-size:36px;color:black;margin-left: 107px;margin-right: 11px"></a>
+                    <a href="#" class="fa fa-git-square" style="font-size:36px;color:black;margin-left: :11px"></a>
+                    <a href="https://www.linked.com/in/sudhanshu-singh-911135166" class="fa fa-linkedin-square" style="font-size:36px;color:black;margin-left: 11px"></a>
+                    <a href="https://www.instagram.com/?hl=en" class="fa fa-instagram" style="font-size:36px;color:black;margin-left:11px"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<!-- footer bottom -->
+<div class="container-fluid " style="text-align: center;background-color: black;color: white ;height: 68px">
+
+    <p>Copyright &copy2020 All rights are reserved | This portfolio is made with <i class="fa fa-thumbs-up" style="font-size:48px;color:red"></i> by
+        <strong>Sudhanshu</strong></p>
+
+
+</div>
+
+
+<!--Java script code -->
+
+<script type="text/javascript">
+  var nav = document.getElementById('navscript')
+
+  window.onscroll = function(){
+
+      if (window.pageYOffset >694){
+        
+        nav.style.background = "paleturquoise";
+        nav.style.boxShadow = "0px 7px 3px lightpink";
+      }
+      else{
+        nav.style.background = "white";
+        nav.style.boxShadow = "none";
+      }
+  }
+//----------------------------------------------------------------------------------------------
+//jquery for progress circular bar
+  var count = $(('#count'));
+  // console.log(count.text());
+$({ Counter: 0 }).animate({ Counter: count.text() }, {
+  duration: 50,
+  easing: 'linear',
+  step: function () {
+    count.text(Math.ceil(this.Counter)+ "%");
+  }
+});
+
+var s = Snap('#animated');
+var progress = s.select('#progress');
+
+progress.attr({strokeDasharray: '0, 251.2'});
+Snap.animate(0,251.2, function( value ) {
+    progress.attr({ 'stroke-dasharray':value+',251.2'});
+}, 5000);
+//-------------------------------------------------------------------------------------------------
+
+
+  function formvalidation()
+  {
+      var name = document.getElementById('inputname').value;
+      var email = document.getElementById('inputemail').value;
+      
+      var mobile = document.getElementById('inputmobile').value;
+      var subject = document.getElementById('inputsubject').value;
+      console.log();
+      var message = document.getElementById('inputText').value;
+
+
+      if(name == "") 
+      {
+         document.getElementById('userspan').innerHTML = "Please fill the name field.";
+         return false;
+      }
+      if(name.length <= 2 || name.length > 20 )
+      {
+        document.getElementById('userspan').innerHTML = "user length should be 3 to 20";
+        return false;
+      }
+      if(!isNaN(name))
+      {
+         document.getElementById('userspan').innerHTML = "Only Characters are allowed";
+        return false;
+      }
+
+
+
+      if(email == "")
+      {
+         document.getElementById('emailspan').innerHTML = "Please fill the email field.";
+         return false;
+      }
+      if(email.indexOf('@') == 0)
+      {
+         document.getElementById('emailspan').innerHTML = "Please fill the correct email ID.";
+         return false;
+      }
+      if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.'))
+        {
+         document.getElementById('emailspan').innerHTML = "Please fill the correct email ID.";
+         return false;
+      }
+
+      
+
+      if(mobile == "")
+      {
+         document.getElementById('mobilespan').innerHTML = "Please fill the mobile field.";
+         return false;
+      }
+      if(isNaN(mobile))
+      {
+         document.getElementById('mobilespan').innerHTML = "Please fill the mobile number only.";
+         return false;
+      }
+      if(mobile.length != 10)
+      {
+         document.getElementById('mobilespan').innerHTML = "Please fill the 10 digits mobile number only.";
+         return false;
+      }
+
+
+
+      if(subject =="")
+      {
+         document.getElementById('subjectspan').innerHTML = "Please fill the subject field.";
+         return false;
+      }
+      
+      if(subject.length <= 5 )
+      {
+         document.getElementById('subjectspan').innerHTML = "Please fill the meaningful title.";
+         return false;
+      }
+
+
+      if(message ="")
+      {
+         document.getElementById('messagespan').innerHTML = "Please fill the message field within 100 character.";
+         return false;
+      }
+         alert("You have successfully submit the request");
+  return true;
+
+  }
+
+
+</script>
+</body>
+</html>
