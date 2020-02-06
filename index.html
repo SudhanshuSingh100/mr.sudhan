@@ -19,7 +19,15 @@
 
     
      <style type="text/css">
-         .wrapper{
+       #loading{
+      	position:fixed;
+      	width: 100%;
+      	height:100vh;
+      	background:#fff url(https://loading.io/spinners/lg.walking-clock-preloader.gif) no-repeat center;
+      	z-index: 99999;
+           }
+         
+   .wrapper{
         position: absolute;
         top: 65%;
         left: 22%;
@@ -258,7 +266,9 @@
 
     </style>
 </head>
-<body>
+<body onload="loaderFunc()">
+    <div id="loading"></div>
+    
 
 <nav class="navbar navbar-expand-md  navbar-light fixed-top" id="navscript" style="background-color: antiquewhite">
 
@@ -886,6 +896,18 @@
 <!--Java script code -->
 
 <script type="text/javascript">
+    
+    // // <!-- pre-loading icon -->
+ 
+         var preloader = document.getElementById('loading');
+         function loaderFunc()
+         {
+            preloader.style.display = 'none';
+         }
+
+// =====================
+    
+    
   var nav = document.getElementById('navscript')
 
   window.onscroll = function(){
