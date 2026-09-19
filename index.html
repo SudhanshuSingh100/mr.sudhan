@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sudhanshu Singh — Backend Developer (.NET Core)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sudhanshu Singh — Backend Developer specializing in .NET Core, C#, and Azure. 5+ years building claim, policy and healthcare systems at AdvantageGo and Capgemini.">
+<link rel="icon" href="images/logo_me.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF8F1;
+    --bg-alt:#FFFFFF;
+    --panel:#EEF5FA;
+    --text:#20303D;
+    --text-muted:#5C7080;
+    --border:#DDE7ED;
+    --teal:#3E8FC4;
+    --amber:#C9922E;
+    --font-sans:'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+    --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --font-serif:'Lora', Georgia, serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html{background:var(--bg);}
+  body{
+    margin:0;
+    background:transparent;
+    color:var(--text);
+    font-family:var(--font-sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+  }
+  ::selection{background:var(--teal);color:#fff;}
+  a{color:var(--teal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:var(--font-serif);font-weight:600;line-height:1.25;margin:0;}
+  p{margin:0 0 1rem;color:var(--text-muted);max-width:62ch;}
+  code, .mono{font-family:var(--font-mono);}
+
+  /* ---------- Floating light rays ---------- */
+  .rays{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+  .rays span{
+    position:absolute;top:-15%;height:135%;width:130px;
+    background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(105,175,215,.32) 32%, rgba(201,146,46,.14) 62%, rgba(255,255,255,0) 100%);
+    filter:blur(34px);
+    animation:floatRay 18s ease-in-out infinite;
+  }
+  .rays span:nth-child(1){left:6%;width:120px;animation-name:floatRay1;animation-duration:17s;}
+  .rays span:nth-child(2){left:42%;width:170px;animation-name:floatRay2;animation-duration:22s;animation-delay:-6s;
+    background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(105,175,215,.24) 38%, rgba(255,255,255,0) 100%);}
+  .rays span:nth-child(3){left:76%;width:100px;animation-name:floatRay3;animation-duration:20s;animation-delay:-11s;}
+  @keyframes floatRay1{
+    0%,100%{transform:translateY(-3%) rotate(11deg);}
+    50%{transform:translateY(3%) rotate(7deg);}
+  }
+  @keyframes floatRay2{
+    0%,100%{transform:translateY(3%) rotate(-9deg);}
+    50%{transform:translateY(-3%) rotate(-5deg);}
+  }
+  @keyframes floatRay3{
+    0%,100%{transform:translateY(-2%) rotate(15deg);}
+    50%{transform:translateY(2%) rotate(11deg);}
+  }
+  body.dark .rays span{opacity:.5;}
+
+  .app{display:flex;min-height:100vh;position:relative;z-index:1;}
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    width:280px;flex-shrink:0;
+    background:var(--bg-alt);
+    border-right:1px solid var(--border);
+    padding:2.5rem 2rem;
+    position:sticky;top:0;height:100vh;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:.75rem;margin-bottom:2.5rem;}
+  .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--border);}
+  .brand .name{font-weight:600;font-size:.95rem;color:var(--text);}
+  .brand .role{font-size:.75rem;color:var(--text-muted);}
+
+  .sidenav{list-style:none;margin:0;padding:0;}
+  .sidenav li{margin-bottom:.4rem;}
+  .sidenav a{
+    display:block;padding:.45rem .6rem;border-radius:6px;
+    font-family:var(--font-mono);font-size:.85rem;
+    color:var(--text-muted);
+  }
+  .sidenav a:hover{color:var(--text);background:var(--panel);text-decoration:none;}
+  .sidenav a.active{color:var(--teal);background:var(--panel);}
+
+  .sidebar-foot{display:flex;flex-direction:column;gap:1rem;}
+  .resume-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    background:var(--amber);color:#1A1204;font-weight:600;
+    padding:.65rem 1rem;border-radius:6px;font-size:.9rem;
+  }
+  .resume-btn:hover{background:#eab36c;text-decoration:none;}
+  .resume-alt{font-size:.75rem;color:var(--text-muted);text-align:center;}
+  .socials{display:flex;gap:.9rem;justify-content:center;}
+  .socials a{color:var(--text-muted);font-size:.8rem;font-family:var(--font-mono);}
+  .socials a:hover{color:var(--teal);}
+  .theme-toggle{
+    background:none;border:1px solid var(--border);color:var(--text-muted);
+    border-radius:6px;padding:.4rem;cursor:pointer;font-family:var(--font-mono);font-size:.75rem;
+    align-self:center;
+  }
+  .theme-toggle:hover{color:var(--text);border-color:var(--text-muted);}
+
+  .mobile-bar{display:none;}
+
+  /* ---------- Content ---------- */
+  .content{flex:1;min-width:0;}
+  section{padding:5.5rem 3rem;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow-path{font-family:var(--font-mono);font-size:.8rem;color:var(--amber);margin-bottom:.6rem;display:block;}
+  h2.section-title{font-size:1.6rem;margin-bottom:2.25rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:92vh;display:flex;align-items:center;
+    padding-top:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;width:100%;}
+  .hero h1{font-size:2.75rem;margin-bottom:.5rem;}
+  .hero .subrole{font-family:var(--font-mono);color:var(--teal);font-size:1.05rem;margin-bottom:1.25rem;display:block;}
+  .hero p.lede{font-size:1.05rem;color:var(--text-muted);max-width:48ch;}
+  .hero-ctas{display:flex;gap:.9rem;margin-top:1.75rem;flex-wrap:wrap;}
+  .btn{
+    padding:.7rem 1.3rem;border-radius:6px;font-size:.9rem;font-weight:600;
+    border:1px solid var(--border);
+  }
+  .btn-primary{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .btn-primary:hover{background:#357EB0;text-decoration:none;}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-muted);text-decoration:none;}
+
+  .code-card{
+    background:#161C21;border:1px solid #26313A;border-radius:10px;
+    overflow:hidden;font-family:var(--font-mono);font-size:.82rem;box-shadow:0 20px 50px -25px rgba(32,60,80,.35);
+  }
+  .code-card .code-head{
+    display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;
+    border-bottom:1px solid #26313A;background:#10151A;
+  }
+  .code-head span{width:10px;height:10px;border-radius:50%;background:#26313A;}
+  .code-head .file{margin-left:.6rem;color:#8B99A1;font-size:.75rem;}
+  .code-card pre{margin:0;padding:1.25rem 1.4rem;overflow-x:auto;}
+  .code-card code{color:#8B99A1;}
+  .tok-kw{color:#7BA6E0;}
+  .tok-type{color:#5FBDAE;}
+  .tok-str{color:#E0A458;}
+  .tok-prop{color:#C9B4E0;}
+  .tok-num{color:#E0A458;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start;}
+  .about-grid img{border-radius:10px;border:1px solid var(--border);}
+  .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;}
+  .tag{
+    font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);
+    border:1px solid var(--border);border-radius:5px;padding:.25rem .55rem;
+  }
+
+  /* ---------- Experience ---------- */
+  .job{margin-bottom:2.75rem;padding-bottom:2.75rem;border-bottom:1px dashed var(--border);}
+  .job:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:.15rem;}
+  .job-title{font-size:1.1rem;color:var(--text);font-weight:600;}
+  .job-dates{font-family:var(--font-mono);font-size:.78rem;color:var(--amber);white-space:nowrap;}
+  .job-meta{color:var(--text-muted);font-size:.9rem;margin-bottom:.9rem;}
+  .job ul{margin:0;padding-left:1.1rem;color:var(--text-muted);}
+  .job li{margin-bottom:.45rem;}
+  .job li::marker{color:var(--teal);}
+
+  /* ---------- Skills: growth log ---------- */
+  .growth-log{position:relative;margin-bottom:3.5rem;padding-left:1.75rem;}
+  .growth-log::before{
+    content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--border);
+  }
+  .commit{position:relative;padding-bottom:2rem;}
+  .commit:last-child{padding-bottom:0;}
+  .commit::before{
+    content:"";position:absolute;left:-1.75rem;top:.35rem;width:12px;height:12px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--amber);
+  }
+  .commit-head{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);margin-bottom:.35rem;}
+  .commit-head .hash{color:var(--teal);}
+  .commit-title{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.5rem;}
+  .diff{list-style:none;margin:0;padding:0;font-family:var(--font-mono);font-size:.82rem;}
+  .diff li{color:var(--text-muted);padding:.1rem 0;}
+  .diff li::before{content:"+ ";color:var(--teal);}
+
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;}
+  .stack-cat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.2rem;}
+  .stack-cat h3{font-size:.8rem;font-family:var(--font-mono);color:var(--amber);margin-bottom:.7rem;font-weight:500;}
+  .stack-cat .tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+
+  /* ---------- Education / Achievements ---------- */
+  .edu-primary{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;
+    padding:1.4rem 1.5rem;margin-bottom:1.5rem;
+  }
+  .edu-primary h3{font-size:1.05rem;margin-bottom:.2rem;}
+  .edu-primary .meta{color:var(--text-muted);font-size:.9rem;}
+  .edu-earlier{list-style:none;margin:0;padding:0;}
+  .edu-earlier li{
+    display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);
+    color:var(--text-muted);font-size:.9rem;
+  }
+  .edu-earlier li:last-child{border-bottom:none;}
+  .edu-earlier .yr{font-family:var(--font-mono);color:var(--text-muted);}
+  .edu-note{font-size:.8rem;color:var(--text-muted);margin-top:.75rem;font-style:italic;}
+
+  .achv-list{list-style:none;margin:1.5rem 0 0;padding:0;}
+  .achv-list li{padding:.5rem 0 .5rem 1.4rem;position:relative;color:var(--text-muted);}
+  .achv-list li::before{content:"›";position:absolute;left:0;color:var(--teal);font-family:var(--font-mono);}
+
+  /* ---------- Projects ---------- */
+  .proj-note{font-size:.85rem;margin-bottom:2rem;}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+  .proj-card{border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.35rem;background:var(--panel);}
+  .proj-card h3{font-size:1rem;margin-bottom:.3rem;}
+  .proj-card .meta{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);margin-bottom:.6rem;display:block;}
+  .proj-card p{font-size:.9rem;margin-bottom:.8rem;}
+  .proj-card a.link{font-family:var(--font-mono);font-size:.8rem;}
+
+  /* ---------- Contact / Footer ---------- */
+  .contact-row{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-start;}
+  .contact-links{list-style:none;margin:1.25rem 0 0;padding:0;}
+  .contact-links li{margin-bottom:.6rem;}
+  .contact-links a{font-family:var(--font-mono);font-size:.95rem;}
+  footer{
+    padding:2rem 3rem;max-width:900px;margin:0 auto;
+    color:var(--text-muted);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+  }
+
+  @media (max-width:900px){
+    .app{flex-direction:column;}
+    .sidebar{
+      position:relative;height:auto;width:100%;flex-direction:row;
+      align-items:center;justify-content:space-between;padding:1rem 1.25rem;
+    }
+    .sidebar > .brand{margin-bottom:0;}
+    .sidebar-nav-wrap{
+      display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg-alt);
+      border-bottom:1px solid var(--border);padding:1rem 1.25rem 1.5rem;
+    }
+    .sidebar-nav-wrap.open{display:block;}
+    .sidebar-foot{flex-direction:row;align-items:center;}
+    .mobile-bar{display:block;background:none;border:1px solid var(--border);color:var(--text);
+      border-radius:6px;padding:.4rem .7rem;font-family:var(--font-mono);font-size:.8rem;cursor:pointer;}
+    section{padding:3.5rem 1.5rem;}
+    .hero{min-height:auto;}
+    .hero-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-grid img{width:140px;}
+    footer{padding:1.5rem;flex-direction:column;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .rays span{animation:none;}
+  }
+
+  body.dark{
+    --bg:#0F1417;--bg-alt:#161C21;--panel:#1A2126;--text:#E7ECEE;
+    --text-muted:#8B99A1;--border:#26313A;--teal:#5FBDAE;--amber:#E0A458;
+  }
+  body.dark .btn-primary{color:#0B1615;}
+  body.dark .btn-primary:hover{background:#79cdc0;}
+  body.dark ::selection{color:#0F1417;}
+</style>
+</head>
+<body>
+
+<div class="rays" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div style="display:flex;flex-direction:column;flex:1;">
+      <div class="brand">
+        <img src="images/logo_me.jpg" alt="Sudhanshu Singh">
+        <div>
+          <div class="name">Sudhanshu Singh</div>
+          <div class="role">Backend Developer</div>
+        </div>
+        <button class="mobile-bar" id="navToggle" aria-expanded="false" aria-controls="sidebarNav">menu</button>
+      </div>
+
+      <div class="sidebar-nav-wrap" id="sidebarNav">
+        <ul class="sidenav" id="sidenavList">
+          <li><a href="#home">~/home</a></li>
+          <li><a href="#about">~/about</a></li>
+          <li><a href="#experience">~/experience</a></li>
+          <li><a href="#skills">~/skills</a></li>
+          <li><a href="#education">~/education</a></li>
+          <li><a href="#projects">~/projects</a></li>
+          <li><a href="#contact">~/contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-foot">
+      <a href="Resume2024.pdf" class="resume-btn">Download résumé</a>
+      <div class="resume-alt">Earlier version: <a href="Resume1.pdf">Resume1.pdf</a></div>
+      <div class="socials">
+        <a href="https://github.com/SudhanshuSingh100/" target="_blank" rel="noopener">github</a>
+        <a href="https://www.linkedin.com/in/sudhanshu-singh-911135166/" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:mr.sudmca@gmail.com">email</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle">toggle theme</button>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Sudhanshu Singh</h1>
+          <span class="subrole">Backend Developer — .NET Core &amp; C#</span>
+          <p class="lede">5+ years building claim, policy and healthcare systems for enterprise clients — from key-vault services at GE HealthCare to microservices APIs at AdvantageGo. I work across the full SDLC: design, API development, CI/CD, and production support.</p>
+          <div class="hero-ctas">
+            <a href="#experience" class="btn btn-primary">View experience</a>
+            <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          </div>
+        </div>
+        <div class="code-card">
+          <div class="code-head">
+            <span style="background:#e05c4c"></span><span style="background:#e0b04c"></span><span style="background:#4cae5c"></span>
+            <span class="file">profile.cs</span>
+          </div>
+          <pre><code><span class="tok-kw">public class</span> <span class="tok-type">Developer</span>
+{
+    <span class="tok-kw">public string</span> <span class="tok-prop">Name</span> = <span class="tok-str">"Sudhanshu Singh"</span>;
+    <span class="tok-kw">public string</span> <span class="tok-prop">Role</span> = <span class="tok-str">"Backend Developer"</span>;
+    <span class="tok-kw">public string</span> <span class="tok-prop">Stack</span> = <span class="tok-str">".NET Core, C#, Azure"</span>;
+    <span class="tok-kw">public int</span> <span class="tok-prop">YearsExperience</span> = <span class="tok-num">5</span>;
+    <span class="tok-kw">public bool</span> <span class="tok-prop">UsesCopilotDaily</span> = <span class="tok-kw">true</span>;
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <span class="eyebrow-path mono">~/about</span>
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <img src="images/ravicol_.jpg" alt="Sudhanshu Singh">
+        <div>
+          <p>I'm a software developer with 5+ years of experience across .NET Core, C#, EF Core and LINQ, working in Agile teams through every phase of the SDLC. I've shipped everything from claim and policy APIs for insurance clients to key-vault services and document automation for healthcare systems.</p>
+          <p>I studied Computer Applications at Aligarh Muslim University, where I first got hooked on building things through analytical, problem-solving approaches. That curiosity hasn't slowed down — I lean on GitHub Copilot and Claude in day-to-day development, and I'm always picking up the next piece of the stack.</p>
+          <div class="about-tags">
+            <span class="tag">.NET Core</span><span class="tag">C#</span><span class="tag">EF Core</span>
+            <span class="tag">Azure</span><span class="tag">REST APIs</span><span class="tag">Microservices</span>
+            <span class="tag">SQL Server</span><span class="tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <span class="eyebrow-path mono">~/experience</span>
+      <h2 class="section-title">Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="job-title">API Developer — AdvantageGo, a Sapiens Company</span>
+          <span class="job-dates">Jul 2024 — Present</span>
+        </div>
+        <div class="job-meta">Clients: Aspen · Talbot · CNA Hardy</div>
+        <ul>
+          <li>Developed end-to-end claim and policy APIs, persisting data and deploying to IIS.</li>
+          <li>Designed and scripted microservices deployment in PowerShell, integrated with the web API layer.</li>
+          <li>Delivered complex features independently and collaboratively within a microservices architecture.</li>
+          <li>Documented design, functionality and UI decisions in Confluence; ran Agile / Scrum / Kanban via Azure Boards (TFS).</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="job-title">Associate Consultant — Capgemini</span>
+          <span class="job-dates">Oct 2023 — Jun 2024</span>
+        </div>
+        <div class="job-meta">Client: Caterpillar</div>
+        <ul>
+          <li>Built web app features with .NET Core, MVC, C# and SQL Server.</li>
+          <li>Developed a document-module cloning feature in a three-tier architecture, plus UI enhancements and critical bug fixes.</li>
+          <li>Owned CI/CD on Azure Pipelines — build agents, build pipelines, and release configuration.</li>
+          <li>Ran code reviews, refactoring and optimization; translated PM/PO requirements into technical specs.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="job-title">Senior / Software Analyst — Capgemini</span>
+          <span class="job-dates">Feb 2021 — Oct 2023</span>
+        </div>
+        <div class="job-meta">Client: GE HealthCare</div>
+        <ul>
+          <li>Designed and built a key-vault service for secure, centralized credential storage.</li>
+          <li>Built background jobs with Hangfire and Cron expressions; automated mail reading and cash reporting.</li>
+          <li>Automated email workflows via SMTP, POP3 and Microsoft Graph; integrated Box Drive APIs for document management.</li>
+          <li>Generated documents via Syncfusion and LibreOffice with DocuSign tag templates; AZ-900 certified.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <span class="eyebrow-path mono">~/skills</span>
+      <h2 class="section-title">How the stack was built</h2>
+      <p style="margin-bottom:2rem;">Rather than static percentage bars, here's what each role actually added to the toolkit — in order.</p>
+
+      <div class="growth-log">
+        <div class="commit">
+          <div class="commit-head"><span class="hash">2021·GE HealthCare</span> — Capgemini</div>
+          <div class="commit-title">Foundations: secure services &amp; background processing</div>
+          <ul class="diff">
+            <li>SQL Server, Oracle DB2</li>
+            <li>Key-vault services, Hangfire background jobs</li>
+            <li>SMTP / POP3 / Graph email automation, Box Drive API</li>
+            <li>AZ-900 Azure Fundamentals, SOLID principles &amp; design patterns</li>
+          </ul>
+        </div>
+        <div class="commit">
+          <div class="commit-head"><span class="hash">2023·Caterpillar</span> — Capgemini</div>
+          <div class="commit-title">Scaling up: architecture &amp; delivery pipelines</div>
+          <ul class="diff">
+            <li>Three-tier architecture</li>
+            <li>Azure DevOps CI/CD pipelines, build agents &amp; release configs</li>
+            <li>Structured code review practices</li>
+          </ul>
+        </div>
+        <div class="commit">
+          <div class="commit-head"><span class="hash">2024·AdvantageGo</span> — Sapiens</div>
+          <div class="commit-title">Current: distributed systems &amp; ownership</div>
+          <ul class="diff">
+            <li>Microservices architecture</li>
+            <li>PowerShell deployment scripting, IIS deployment</li>
+            <li>Azure Boards / TFS, Confluence documentation</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size:.95rem;color:var(--text);margin-bottom:1.25rem;">Full toolkit today</h3>
+      <div class="stack-grid">
+        <div class="stack-cat">
+          <h3>backend</h3>
+          <div class="tags">
+            <span class="tag">C#</span><span class="tag">.NET Core</span><span class="tag">.NET 5/6</span>
+            <span class="tag">.NET Framework</span><span class="tag">ASP.NET MVC</span><span class="tag">EF Core</span>
+            <span class="tag">LINQ</span><span class="tag">OOP</span><span class="tag">Python 3.x</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <h3>api &amp; architecture</h3>
+          <div class="tags">
+            <span class="tag">REST Web API</span><span class="tag">Microservices</span>
+            <span class="tag">Clean Architecture</span><span class="tag">Three-tier</span><span class="tag">SOLID</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <h3>database</h3>
+          <div class="tags"><span class="tag">SQL Server</span><span class="tag">DB2</span></div>
+        </div>
+        <div class="stack-cat">
+          <h3>frontend</h3>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            <span class="tag">Bootstrap</span><span class="tag">Angular</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <h3>devops &amp; cloud</h3>
+          <div class="tags">
+            <span class="tag">Azure CI/CD</span><span class="tag">Git</span><span class="tag">GitHub</span>
+            <span class="tag">NuGet</span><span class="tag">npm</span><span class="tag">Azure Functions</span>
+            <span class="tag">Azure Key Vault</span><span class="tag">AZ-900</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <h3>tools &amp; practices</h3>
+          <div class="tags">
+            <span class="tag">Visual Studio / Code</span><span class="tag">SSMS</span><span class="tag">Postman</span>
+            <span class="tag">SoapUI</span><span class="tag">GitHub Copilot</span><span class="tag">Agile</span>
+            <span class="tag">Scrum</span><span class="tag">Kanban</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + ACHIEVEMENTS -->
+    <section id="education">
+      <span class="eyebrow-path mono">~/education</span>
+      <h2 class="section-title">Education &amp; achievements</h2>
+
+      <div class="edu-primary">
+        <h3>Master of Computer Applications (MCA)</h3>
+        <div class="meta">Aligarh Muslim University · CGPA 8.1 · Jul 2017 — Aug 2020</div>
+      </div>
+
+      <ul class="edu-earlier">
+        <li><span>Class X</span><span class="yr">CBSE · 2012</span></li>
+      </ul>
+
+      <ul class="achv-list">
+        <li>Student IT Coordinator, University TPO — Nov 2017 to Mar 2020</li>
+        <li>JEE Mains Qualifier</li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <span class="eyebrow-path mono">~/projects</span>
+      <h2 class="section-title">Projects &amp; open source</h2>
+      <p class="proj-note">Client work for AdvantageGo, Capgemini and GE HealthCare is under NDA, so it isn't linked here. These are earlier, self-directed projects from university.</p>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <h3>AMU Professor Recruit 1.0</h3>
+          <span class="meta">Aug 2019 — Nov 2019</span>
+          <p>A university faculty recruitment and selection workflow system built for AMU.</p>
+          <a class="link" href="https://github.com/SudhanshuSingh100/AMUProfessorRecruit" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <div class="proj-card">
+          <h3>Phishing Website Detection</h3>
+          <span class="meta">Feb 2019 — May 2019</span>
+          <p>A machine learning model using a Random Forest algorithm to flag phishing links.</p>
+          <a class="link" href="https://github.com/SudhanshuSingh100/Detect-phishLink" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <div class="proj-card">
+          <h3>Why Aligarh</h3>
+          <span class="meta">2020</span>
+          <p>A guide to my hometown, built to highlight local spots worth visiting.</p>
+          <a class="link" href="https://sudhanshusingh100.github.io/whyAligarh/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <div class="proj-card">
+          <h3>This portfolio</h3>
+          <span class="meta">First built 2020, redesigned since</span>
+          <p>The site you're looking at now — source and history are public.</p>
+          <a class="link" href="https://github.com/SudhanshuSingh100/mr.sudhan" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="eyebrow-path mono">~/contact</span>
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-row">
+        <div>
+          <p>Open to backend and full-stack .NET roles, and happy to talk shop about clean architecture, Azure or anything in between. The fastest way to reach me is email.</p>
+        </div>
+        <ul class="contact-links">
+          <li><a href="mailto:mr.sudmca@gmail.com">mr.sudmca@gmail.com</a></li>
+          <li><a href="https://github.com/SudhanshuSingh100/" target="_blank" rel="noopener">github.com/SudhanshuSingh100</a></li>
+          <li><a href="https://www.linkedin.com/in/sudhanshu-singh-911135166/" target="_blank" rel="noopener">linkedin.com/in/sudhanshu-singh</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Sudhanshu Singh</span>
+      <span>Built with HTML, CSS &amp; a little JS — no framework overhead.</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var navWrap = document.getElementById('sidebarNav');
+  navToggle.addEventListener('click', function(){
+    var isOpen = navWrap.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.querySelectorAll('.sidenav a').forEach(function(a){
+    a.addEventListener('click', function(){ navWrap.classList.remove('open'); });
+  });
+
+  // Theme toggle (light is default; toggle switches to the dark alternate)
+  var themeToggle = document.getElementById('themeToggle');
+  try{
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+  }catch(e){}
+  themeToggle.addEventListener('click', function(){
+    document.body.classList.toggle('dark');
+    try{
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }catch(e){}
+  });
+
+  // Active nav link on scroll
+  var sections = document.querySelectorAll('main section[id]');
+  var navLinks = document.querySelectorAll('.sidenav a');
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          navLinks.forEach(function(l){ l.classList.remove('active'); });
+          var match = document.querySelector('.sidenav a[href="#' + entry.target.id + '"]');
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+</script>
+
+</body>
+</html>
